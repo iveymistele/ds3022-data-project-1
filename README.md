@@ -48,6 +48,12 @@ SELECT * FROM read_parquet('file9.parquet');
 
 **NOTE:** Ask yourself: Do I need all columns for tables being imported?
 
+need: 
+- passenger_count (BIGINT)
+- trip_distance (DOUBLE)
+- tpep_pickup_datetime (TIMESTAMP)
+- tpep_dropoff_datetime (TIMESTAMP)
+
 ## Clean
 
 Trips should be cleaned and checked for the following conditions (whether or not they exist):
