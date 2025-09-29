@@ -64,3 +64,31 @@ LINE 4:             FROM read_parquet($urls)
                          ^
 2025-09-24 23:01:46,048 - INFO - Connected to DuckDB instance
 2025-09-24 23:02:08,343 - INFO - Finished loading all parquet files
+2025-09-29 14:38:59,110 - INFO - Connected to DuckDB instance
+2025-09-29 14:38:59,114 - ERROR - An error occurred: Not implemented Error: Can only drop one object at a time
+2025-09-29 14:39:42,165 - INFO - Connected to DuckDB instance
+2025-09-29 14:40:08,290 - INFO - Finished loading all yellow parquet files
+2025-09-29 14:40:08,369 - ERROR - An error occurred: Binder Error: Referenced column "tpep_pickup_datetime" not found in FROM clause!
+Candidate bindings: "lpep_pickup_datetime", "lpep_dropoff_datetime", "trip_distance", "tip_amount", "RatecodeID"
+
+LINE 3:             SELECT passenger_count, trip_distance, tpep_pickup_datetime, tpep_dropoff_datetime
+                                                           ^
+2025-09-29 14:42:34,392 - INFO - Connected to DuckDB instance
+2025-09-29 14:42:35,485 - ERROR - An error occurred: HTTP Error: Unable to connect to URL "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-01.parquet": 403 (Forbidden).
+2025-09-29 14:48:46,545 - INFO - Connected to DuckDB instance
+2025-09-29 14:48:48,968 - INFO - Created yellow table from https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-01.parquet
+2025-09-29 14:50:12,260 - INFO - Connected to DuckDB instance
+2025-09-29 14:50:14,563 - INFO - Created yellow table from https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-01.parquet
+2025-09-29 14:51:43,822 - WARNING - Skipping https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-12.parquet due to error: HTTP Error: Unable to connect to URL "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-12.parquet": 403 (Forbidden).
+2025-09-29 14:52:45,339 - INFO - Connected to DuckDB instance
+2025-09-29 14:53:52,765 - INFO - Connected to DuckDB instance
+2025-09-29 14:55:02,111 - INFO - Connected to DuckDB instance
+2025-09-29 14:57:23,569 - INFO - Connected to DuckDB instance
+2025-09-29 14:57:29,073 - INFO - Created yellow table from https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-01.parquet
+2025-09-29 15:03:40,715 - INFO - Connected to DuckDB instance
+2025-09-29 15:03:43,056 - INFO - Created yellow table from https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-01.parquet
+2025-09-29 15:11:25,246 - INFO - Connected to DuckDB instance
+2025-09-29 15:11:30,884 - INFO - Created yellow table from https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-01.parquet
+2025-09-29 15:27:13,866 - INFO - Connected to DuckDB instance
+2025-09-29 15:27:17,952 - INFO - Created yellow table from https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-01.parquet
+2025-09-29 15:41:51,584 - INFO - Created green table from https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2024-01.parquet

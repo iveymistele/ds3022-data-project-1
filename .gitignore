@@ -1,1 +1,5 @@
 emissions.duckdb
+load.log
+transform.log
+clean.log
+analysis.log
