@@ -9,19 +9,24 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-
+# First function
+# Drop clean tables if exist 
+# Removes duplicates, adds duration column, and check for specified conditions 
+# Prints to log and screen
 def clean_table(con, table_name, pickup_col, dropoff_col):
     # print initial rows
     initial_rows = con.execute(f"SELECT COUNT(*) FROM {table_name};").fetchone()[0]
     logger.info(f"[{table_name}] Initial row count: {initial_rows}")
 
-    # drop duplicates
-    con.execute(f"""
-        CREATE TABLE {table_name}_2 AS 
-        SELECT DISTINCT * FROM {table_name};
+    clean_name = f"{table_name}_clean"
 
-        DROP TABLE {table_name};
-        ALTER TABLE {table_name}_2 RENAME TO {table_name};
+    # drop old cleaned table if it exists
+    con.execute(f"DROP TABLE IF EXISTS {clean_name}")
+
+    # remove duplicates into cleaned table
+    con.execute(f"""
+        CREATE TABLE {clean_name} AS 
+        SELECT DISTINCT * FROM {table_name};
     """)
     row_count = con.execute(f"SELECT COUNT(*) FROM {table_name};").fetchone()[0]
     logger.info(f"[{table_name}] Row count after dropping duplicates: {row_count}")
@@ -67,7 +72,8 @@ def clean_table(con, table_name, pickup_col, dropoff_col):
     print(f"[{table_name}] Trips over 100 miles: {far_trips}")
     print(f"[{table_name}] Final row count: {row_count_f}")
 
-
+# Second function
+# Implements first function on tables 'yellow' and 'green' with error handling
 def clean_db(): 
     try:
         con = duckdb.connect(database='emissions.duckdb', read_only=False)

@@ -92,3 +92,19 @@ LINE 3:             SELECT passenger_count, trip_distance, tpep_pickup_datetime,
 2025-09-29 15:27:13,866 - INFO - Connected to DuckDB instance
 2025-09-29 15:27:17,952 - INFO - Created yellow table from https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-01.parquet
 2025-09-29 15:41:51,584 - INFO - Created green table from https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2024-01.parquet
+2025-09-29 17:14:52,711 - INFO - Connected to DuckDB instance
+2025-09-29 17:14:53,795 - INFO - Created yellow table from https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-01.parquet
+2025-09-29 17:29:08,125 - INFO - Created green table from https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2024-01.parquet
+2025-09-29 17:47:14,089 - INFO - Connected to DuckDB instance
+2025-09-29 17:47:26,218 - INFO - Created yellow table from https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2015-01.parquet
+2025-09-29 17:47:49,607 - WARNING - Skipping https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2015-02.parquet due to error: IO Error: Could not establish connection error for HTTP HEAD to 'https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2015-02.parquet'
+2025-09-29 17:47:50,116 - WARNING - Skipping https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2015-03.parquet due to error: IO Error: Could not establish connection error for HTTP HEAD to 'https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2015-03.parquet'
+2025-09-29 17:47:50,629 - WARNING - Skipping https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2015-04.parquet due to error: IO Error: Could not establish connection error for HTTP HEAD to 'https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2015-04.parquet'
+2025-09-29 17:47:51,145 - WARNING - Skipping https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2015-05.parquet due to error: IO Error: Could not establish connection error for HTTP HEAD to 'https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2015-05.parquet'
+2025-09-29 17:47:51,655 - WARNING - Skipping https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2015-06.parquet due to error: IO Error: Could not establish connection error for HTTP HEAD to 'https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2015-06.parquet'
+2025-09-29 17:47:52,169 - WARNING - Skipping https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2015-07.parquet due to error: IO Error: Could not establish connection error for HTTP HEAD to 'https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2015-07.parquet'
+2025-09-29 17:47:52,681 - WARNING - Skipping https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2015-08.parquet due to error: IO Error: Could not establish connection error for HTTP HEAD to 'https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2015-08.parquet'
+2025-09-29 18:55:50,398 - WARNING - Skipping https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-02.parquet due to error: IO Error: Could not establish connection error for HTTP HEAD to 'https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-02.parquet'
+2025-09-29 18:55:50,924 - WARNING - Skipping https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-03.parquet due to error: IO Error: Could not establish connection error for HTTP HEAD to 'https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-03.parquet'
+2025-09-29 18:55:51,442 - WARNING - Skipping https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-04.parquet due to error: IO Error: Could not establish connection error for HTTP HEAD to 'https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-04.parquet'
+2025-09-29 19:34:38,258 - INFO - Created green table from https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2015-01.parquet

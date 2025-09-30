@@ -1,6 +1,7 @@
 import duckdb
 import logging
-import time 
+import time # sleep intervals to avoid blocks from gov server
+
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s",
@@ -10,11 +11,25 @@ logger = logging.getLogger(__name__)
 
 base_url = "https://d37ci6vzurychx.cloudfront.net/trip-data"
 
-yellow_urls = [f"{base_url}/yellow_tripdata_2024-{m:02d}.parquet" for m in range(1, 13)]
-green_urls = [f"{base_url}/green_tripdata_2024-{m:02d}.parquet" for m in range(1, 13)]
 
+# Loop through all years, months and append urls to lists for green and yellow data 
+yellow_urls = [
+    f"{base_url}/yellow_tripdata_{year}-{month:02d}.parquet"
+    for year in range(2015, 2025)  # 2015–2024
+    for month in range(1, 13)
+]
+
+green_urls = [
+    f"{base_url}/green_tripdata_{year}-{month:02d}.parquet"
+    for year in range(2015, 2025)
+    for month in range(1, 13)
+]
 
 time.sleep(120)
+
+# Main function, 
+# Drops old tables if exist and extracts 4 columns from remote server
+# Places into two separate tables (yellow and green) and writes a third table from emissions csv
 def load_parquet_files():
     con = duckdb.connect(database="emissions.duckdb", read_only=False)
     logger.info("Connected to DuckDB instance")
@@ -32,6 +47,7 @@ def load_parquet_files():
     """)
     logger.info(f"Created yellow table from {yellow_urls[0]}")
 
+    time.sleep(20)
     # Insert rest
     for url in yellow_urls[1:]:
         try:
@@ -43,7 +59,7 @@ def load_parquet_files():
             # Row count after each insert
             count = con.execute("SELECT COUNT(*) FROM yellow").fetchone()[0]
             print(f"Yellow row count after {url}: {count}")
-            time.sleep(60)
+            time.sleep(40)
         except Exception as e:
             logger.warning(f"Skipping {url} due to error: {e}")
 
@@ -63,7 +79,7 @@ def load_parquet_files():
         FROM read_parquet('{green_urls[0]}')
     """)
     logger.info(f"Created green table from {green_urls[0]}")
-
+    time.sleep(20)
     for url in green_urls[1:]:
         try:
             con.execute(f"""
@@ -73,7 +89,7 @@ def load_parquet_files():
             """)
             count = con.execute("SELECT COUNT(*) FROM green").fetchone()[0]
             print(f"Green row count after {url}: {count}")
-            time.sleep(30)
+            time.sleep(40)
         except Exception as e:
             logger.warning(f"Skipping {url} due to error: {e}")
 

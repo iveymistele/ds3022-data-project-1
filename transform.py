@@ -1,6 +1,9 @@
 import duckdb
 import logging
 
+# note: this was my OG transform script. switched to DBT 
+
+'''
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s",
     filename="transform.log"
@@ -60,7 +63,7 @@ def transform_table(con, table_name, vehicle_type_col):
                 month_of_year = EXTRACT(MONTH FROM {pickup_col});
         """)
 
-        logger.info(f"✅ Finished transforms for {table_name}")
+        logger.info(f"Finished transforms for {table_name}")
 
     except Exception as e:
         logger.error(f"An error occurred while transforming {table_name}: {e}")
@@ -77,3 +80,6 @@ def transform_db():
 
 if __name__ == "__main__":
     transform_db()
+
+
+'''

@@ -1,5 +1,8 @@
 # DS3022 - Data Project 1 (Fall 2025)
 
+dbt run command: 
+`dbt run --project-dir ./dbt --profiles-dir ./dbt`
+
 ## Assignment
 
 <img src="https://s3.amazonaws.com/uvasds-systems/images/nyc-taxi-graphic.png" style="align:right;float:right;max-width:50%;">

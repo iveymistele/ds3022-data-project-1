@@ -1,5 +1,3 @@
 emissions.duckdb
-load.log
-transform.log
-clean.log
-analysis.log
+*.log
+emissions.duckdb.wal
