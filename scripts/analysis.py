@@ -106,10 +106,59 @@ def heavy_light_months(con, table):
     
 # Q6 Function - plot 
 # Generates and saves as png two line plots of carbon usage by month for each table (yellow and green)
+# Commented out is the version I used to generate the plots for 2024 only
 def generate_plots(con):
     try:
-        
+       
         # Yellow Plot
+        yellow_df = con.execute("""
+            SELECT 
+            EXTRACT(YEAR FROM tpep_pickup_datetime) AS year,
+            month_of_year, 
+            SUM(trip_co2_kgs) AS total_co2
+            FROM transformed_yellow
+            GROUP BY year, month_of_year
+            ORDER BY year, month_of_year;
+        """).fetchdf()
+    
+        # Adjust x axis to reflect month AND year 
+        yellow_df["year_month"] = yellow_df["year"].astype(int).astype(str) + "-" + yellow_df["month_of_year"].astype(int).astype(str)
+        yellow_df.plot(kind="line", x="year_month", y="total_co2", marker="o", figsize=(12, 5))
+        plt.title("Total CO2 Emissions by Month (2015-2024) - Yellow Cabs")
+        plt.xlabel("Year-Month")
+        plt.ylabel("Total CO2 (kg)")
+        plt.grid(True)
+        plt.savefig("co2_by_month_yellow.png")
+        plt.close()
+        print("Saved plot as co2_by_month_yellow.png")
+        logger.info("Saved plot co2_by_month_yellow.png")
+
+        # Green plot 
+        green_df = con.execute("""
+            SELECT 
+            EXTRACT(YEAR FROM lpep_pickup_datetime) AS year,
+            month_of_year, 
+            SUM(trip_co2_kgs) AS total_co2
+            FROM transformed_green
+            GROUP BY year, month_of_year
+            ORDER BY year, month_of_year;
+        """).fetchdf()
+
+        # Again adjust x axis to reflect month AND year 
+        green_df["year_month"] = green_df["year"].astype(int).astype(str) + "-" + green_df["month_of_year"].astype(int).astype(str)
+        green_df.plot(kind="line", x="year_month", y="total_co2", marker="o", figsize=(12, 5))
+        plt.title("Total CO2 Emissions by Month (2015-2024) - Green Cabs")
+        plt.xlabel("Year-Month")
+        plt.ylabel("Total CO2 (kg)")
+        plt.grid(True)
+        plt.savefig("co2_by_month_green.png")
+        plt.close()
+        print("Saved plot as co2_by_month_green.png")
+        logger.info("Saved plot co2_by_month_green.png")
+
+        # Below is my code for just 2024 plots 
+        '''
+                # Yellow Plot
         yellow_df = con.execute("""
             SELECT month_of_year, SUM(trip_co2_kgs) AS total_co2
             FROM transformed_yellow
@@ -137,6 +186,7 @@ def generate_plots(con):
             ;
         """).fetchdf()
     
+       
         green_df.plot(kind="line", x="month_of_year", y="total_co2", marker="o", figsize=(8, 5))
         plt.title("Total CO2 Emissions by Month - Green Cabs")
         plt.xlabel("Month (1-12 = January-December)")
@@ -146,6 +196,8 @@ def generate_plots(con):
         plt.close()
         print("Saved plot as co2_by_month_green.png")
         logger.info("Saved plot co2_by_month_green.png")
+        
+        '''
     except Exception as e: 
         logger.error("Plots failed. :( ")
 

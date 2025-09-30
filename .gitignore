@@ -1,3 +1,5 @@
 emissions.duckdb
 *.log
 emissions.duckdb.wal
+oldanalysis.py
+*.parquet
